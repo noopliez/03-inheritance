@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 public abstract class State {
 
     public Logger logger = LogManager.getLogger();
-    ;
 
     private int time = 0;
     private final int duration;
@@ -24,6 +23,11 @@ public abstract class State {
     }
 
     State tick(Cat c) {
+
+        if (duration < 1) {
+            return null;
+        }
+
         time += 1;
 
         return successor(c);

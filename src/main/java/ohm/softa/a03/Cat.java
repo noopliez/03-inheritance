@@ -37,42 +37,51 @@ public class Cat {
 
     /*
     TODO
-    public void tick() {    }
+    public void tick() {  state = state.duration ?????  }
     */
 
     public int getSleep() {
+
         return sleep;
     }
 
     public int getDigest() {
+
         return digest;
     }
 
     public int getAwake() {
+
         return awake;
     }
 
     public String getName() {
+
         return name;
     }
 
     public boolean isAsleep() {
-        return true;
+
+        return currentState instanceof SleepingState;
     }
 
     public boolean isPlayful() {
-        return true;
+
+        return currentState instanceof PlayfulState;
     }
 
     public boolean isHungry() {
-        return true;
+
+        return currentState instanceof HungryState;
     }
 
     public boolean isDigesting() {
-        return true;
+
+        return currentState instanceof DigestingState;
     }
 
     public boolean isDead() {
-        return true;
+
+        return currentState instanceof DeathState;
     }
 }
