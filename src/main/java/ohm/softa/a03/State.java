@@ -1,17 +1,26 @@
 package ohm.softa.a03;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class State {
-
-    public Logger logger;
-
-    private int time = 0;
+    protected static Logger logger = LogManager.getLogger();
+    private int time;
     private final int duration;
 
-    State(int duration) {
+    public State(int duration) {
         this.duration = duration;
     }
+
+    final State tick(Cat cat) {
+
+        logger.info("tick()");
+        time = time + 1;
+
+        return (time < duration) ? this : this.successor(cat);
+    }
+
+    abstract State successor(Cat cat);
 
     public int getTime() {
         return time;
@@ -20,10 +29,4 @@ public abstract class State {
     public int getDuration() {
         return duration;
     }
-
-    State tick(Cat c) {
-        return null;
-    }
-
-    abstract State successor(Cat cat);
 }
