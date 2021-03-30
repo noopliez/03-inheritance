@@ -9,10 +9,7 @@ public class Cat {
 	private static final Logger logger = LogManager.getLogger();
 
 	// valid states
-	public enum State {SLEEPING, HUNGRY, DIGESTING, PLAYFUL, DEAD}
-
-	// initially, animals are sleeping
-	private State state = State.SLEEPING;
+	// public enum State {SLEEPING, HUNGRY, DIGESTING, PLAYFUL, DEAD}
 
 	// state durations (set via constructor), ie. the number of ticks in each state
 	private final int sleep;
@@ -24,11 +21,16 @@ public class Cat {
 	private int time = 0;
 	private int timeDigesting = 0;
 
+	// initially, animals are sleeping
+	private State state;
+
 	public Cat(String name, int sleep, int awake, int digest) {
 		this.name = name;
 		this.sleep = sleep;
 		this.awake = awake;
 		this.digest = digest;
+
+		state = new SleepingState(sleep);
 	}
 
 	public void tick(){

@@ -12,6 +12,12 @@ public abstract class State {
     }
 
     final State tick(Cat cat) {
+
+        logger.info("tick()");
+        time = time + 1;
+
+        logger.info(State.class.getName());
+
         return null;
     }
 
