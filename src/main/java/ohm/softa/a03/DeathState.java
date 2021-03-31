@@ -5,5 +5,5 @@ public class DeathState extends State {
     public DeathState(int duration) { super(duration); }
 
     @Override
-    State successor(Cat cat) { return new DeathState(-1); }
+    State successor(Cat cat) { return this; }
 }

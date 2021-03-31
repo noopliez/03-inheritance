@@ -5,7 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class State {
     protected static Logger logger = LogManager.getLogger();
-    private int time;
+
+    private int time = 0;
     private final int duration;
 
     public State(int duration) {
